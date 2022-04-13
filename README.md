@@ -5,7 +5,7 @@ This repository create an __AWS:__
  - __VPC-e Gateway connection with S3__
 
 # AWS VPC-e Gateway diagram 
-![Gateway](https://github.com/ValAug/aws-compu-terraform/blob/main/ec2_d.png)
+![Gateway](https://github.com/ValAug/vpc-endpoint-connection-with-s3/blob/main/vpc_endpoint_diagram/vpc-e.png)
 ###### Cloud - :cloud:
 ![AWS](https://img.shields.io/badge/-AWS-000000?style=flat&logo=Amazon%20AWS&logoColor=FF9900)
 
