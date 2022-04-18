@@ -67,8 +67,19 @@ resource "aws_vpc_endpoint" "gw_endpoint" {
     }
 }
 
-resource "aws_vpc_endpoint_policy" "gw_endpoint_policy" {
+
+resource "aws_vpc_endpoint_route_table_association" "gw_endpoint_rt_association" {
+  route_table_id  = aws_route_table.vpc_end_point_rt.id
   vpc_endpoint_id = aws_vpc_endpoint.gw_endpoint.id
+}
+
+
+resource "aws_s3_bucket" "work_load_bucket" {
+    bucket = var.bucket
+}
+
+resource "aws_s3_bucket_policy" "allow_access_to_specific_vpce_only" {
+  bucket = aws_s3_bucket.work_load_bucket.id
   policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
@@ -87,15 +98,5 @@ resource "aws_vpc_endpoint_policy" "gw_endpoint_policy" {
     }
     ]
   })
-}
-
-resource "aws_vpc_endpoint_route_table_association" "gw_endpoint_rt_association" {
-  route_table_id  = aws_route_table.vpc_end_point_rt.id
-  vpc_endpoint_id = aws_vpc_endpoint.gw_endpoint.id
-}
-
-
-resource "aws_s3_bucket" "work_load_bucket" {
-    bucket = var.bucket
 }
 
