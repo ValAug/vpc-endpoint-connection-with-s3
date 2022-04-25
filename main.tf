@@ -76,7 +76,7 @@ resource "aws_vpc_endpoint_policy" "gw_endpoint_policy" {
         "Sid": "Access-to-specific-s3-only",
         "Principal": "*",
         "Action": "s3:*",
-        "Effect": "Deny",
+        "Effect": "Allow",
         "Resource": ["${aws_s3_bucket.work_load_bucket.arn}",
                     "${aws_s3_bucket.work_load_bucket.arn}/*"],
         }
